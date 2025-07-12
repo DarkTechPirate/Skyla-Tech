@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
-import { socketService } from "@/services/socket";
+import { apiService } from "@/services/api";
 import {
   Dialog,
   DialogContent,
@@ -66,35 +66,30 @@ const AdminDashboard = () => {
     }
     setAdminData(JSON.parse(stored));
 
-    // Connect to WebSocket
-    socketService.connect();
+    // Load initial employees
+    const loadEmployees = async () => {
+      try {
+        const employees = await apiService.getEmployees();
+        setEmployees(employees);
+      } catch (error) {
+        console.error('Failed to load employees:', error);
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Failed to load employees. Please refresh the page."
+        });
+      }
+    };
 
-    // Listen for initial employees
-    socketService.onInitialEmployees((initialEmployees) => {
-      setEmployees(initialEmployees);
-    });
+    loadEmployees();
 
-    // Listen for new employees
-    socketService.onEmployeeAdded((employee) => {
-      setEmployees(prev => [...prev, employee]);
-      toast({
-        title: "New Employee Added",
-        description: `${employee.name} has been added to the system.`
-      });
-    });
-
-    // Listen for deleted employees
-    socketService.onEmployeeDeleted((employeeId) => {
-      setEmployees(prev => prev.filter(emp => emp.id !== employeeId));
-      toast({
-        title: "Employee Removed",
-        description: "An employee has been removed from the system."
-      });
-    });
+    // Start polling for updates
+    const stopPolling = apiService.startPolling((updatedEmployees) => {
+      setEmployees(updatedEmployees);
+    }, 3000); // Poll every 3 seconds
 
     return () => {
-      socketService.removeAllListeners();
-      socketService.disconnect();
+      stopPolling();
     };
   }, [navigate]);
 
@@ -107,7 +102,7 @@ const AdminDashboard = () => {
     navigate('/');
   };
 
-  const handleAddEmployee = () => {
+  const handleAddEmployee = async () => {
     if (!newEmployee.name || !newEmployee.employeeId || !newEmployee.companyId || !newEmployee.email || !newEmployee.password) {
       toast({
         variant: "destructive",
@@ -144,49 +139,59 @@ const AdminDashboard = () => {
       id: Date.now().toString(),
     };
 
-    // Emit the new employee through WebSocket
-    socketService.emitAddEmployee(newEmployeeData);
-    
-    // Update local state
-    setEmployees(prev => [...prev, newEmployeeData]);
+    try {
+      await apiService.addEmployee(newEmployeeData);
+      
+      toast({
+        title: "Employee Added",
+        description: "New employee has been successfully added."
+      });
 
-    toast({
-      title: "Employee Added",
-      description: "New employee has been successfully added."
-    });
+      // Show credentials in a separate toast
+      toast({
+        title: "Employee Credentials",
+        description: `
+          Employee ID: ${newEmployeeData.employeeId}
+          Password: ${newEmployeeData.password}
+          Please share these credentials securely with the employee.
+        `,
+        duration: 10000,
+      });
 
-    // Show credentials in a separate toast
-    toast({
-      title: "Employee Credentials",
-      description: `
-        Employee ID: ${newEmployeeData.employeeId}
-        Password: ${newEmployeeData.password}
-        Please share these credentials securely with the employee.
-      `,
-      duration: 10000,
-    });
-
-    // Reset form
-    setNewEmployee({
-      name: "",
-      employeeId: "",
-      companyId: "",
-      email: "",
-      password: ""
-    });
+      // Reset form
+      setNewEmployee({
+        name: "",
+        employeeId: "",
+        companyId: "",
+        email: "",
+        password: ""
+      });
+    } catch (error) {
+      console.error('Failed to add employee:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to add employee. Please try again."
+      });
+    }
   };
 
-  const handleDeleteEmployee = (employeeId: string) => {
-    // Emit delete event through WebSocket
-    socketService.emitDeleteEmployee(employeeId);
-    
-    // Update local state
-    setEmployees(prev => prev.filter(emp => emp.id !== employeeId));
-
-    toast({
-      title: "Employee Removed",
-      description: "Employee has been successfully removed."
-    });
+  const handleDeleteEmployee = async (employeeId: string) => {
+    try {
+      await apiService.deleteEmployee(employeeId);
+      
+      toast({
+        title: "Employee Removed",
+        description: "Employee has been successfully removed."
+      });
+    } catch (error) {
+      console.error('Failed to delete employee:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to delete employee. Please try again."
+      });
+    }
   };
 
   // Filter submissions based on selected company

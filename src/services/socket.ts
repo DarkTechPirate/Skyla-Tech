@@ -1,7 +1,6 @@
 import { io } from 'socket.io-client';
 
-// TODO: Replace this with your actual Render backend URL after deployment
-const SOCKET_URL = 'https://your-backend.onrender.com';
+const SOCKET_URL = 'https://skyla-tech.vercel.app';
 
 export const socket = io(SOCKET_URL);
 
