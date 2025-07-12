@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
+import { socketService } from "@/services/socket";
 import {
   Dialog,
   DialogContent,
@@ -65,17 +66,36 @@ const AdminDashboard = () => {
     }
     setAdminData(JSON.parse(stored));
 
-    // Load task submissions
-    const storedSubmissions = localStorage.getItem('taskSubmissions');
-    if (storedSubmissions) {
-      setSubmissions(JSON.parse(storedSubmissions));
-    }
+    // Connect to WebSocket
+    socketService.connect();
 
-    // Load employees
-    const storedEmployees = localStorage.getItem('employees');
-    if (storedEmployees) {
-      setEmployees(JSON.parse(storedEmployees));
-    }
+    // Listen for initial employees
+    socketService.onInitialEmployees((initialEmployees) => {
+      setEmployees(initialEmployees);
+    });
+
+    // Listen for new employees
+    socketService.onEmployeeAdded((employee) => {
+      setEmployees(prev => [...prev, employee]);
+      toast({
+        title: "New Employee Added",
+        description: `${employee.name} has been added to the system.`
+      });
+    });
+
+    // Listen for deleted employees
+    socketService.onEmployeeDeleted((employeeId) => {
+      setEmployees(prev => prev.filter(emp => emp.id !== employeeId));
+      toast({
+        title: "Employee Removed",
+        description: "An employee has been removed from the system."
+      });
+    });
+
+    return () => {
+      socketService.removeAllListeners();
+      socketService.disconnect();
+    };
   }, [navigate]);
 
   const handleLogout = () => {
@@ -122,24 +142,13 @@ const AdminDashboard = () => {
     const newEmployeeData = {
       ...newEmployee,
       id: Date.now().toString(),
-    } as Employee;
+    };
 
-    const updatedEmployees = [...employees, newEmployeeData];
-    setEmployees(updatedEmployees);
+    // Emit the new employee through WebSocket
+    socketService.emitAddEmployee(newEmployeeData);
     
-    // Store both in localStorage for employee list and credentials
-    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
-    
-    // Store employee credentials separately
-    const credentials = JSON.parse(localStorage.getItem('employeeCredentials') || '[]');
-    credentials.push({
-      employeeId: newEmployeeData.employeeId,
-      email: newEmployeeData.email,
-      password: newEmployeeData.password,
-      name: newEmployeeData.name,
-      companyId: newEmployeeData.companyId
-    });
-    localStorage.setItem('employeeCredentials', JSON.stringify(credentials));
+    // Update local state
+    setEmployees(prev => [...prev, newEmployeeData]);
 
     toast({
       title: "Employee Added",
@@ -154,7 +163,7 @@ const AdminDashboard = () => {
         Password: ${newEmployeeData.password}
         Please share these credentials securely with the employee.
       `,
-      duration: 10000, // Show for 10 seconds
+      duration: 10000,
     });
 
     // Reset form
@@ -168,9 +177,11 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteEmployee = (employeeId: string) => {
-    const updatedEmployees = employees.filter(emp => emp.id !== employeeId);
-    setEmployees(updatedEmployees);
-    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    // Emit delete event through WebSocket
+    socketService.emitDeleteEmployee(employeeId);
+    
+    // Update local state
+    setEmployees(prev => prev.filter(emp => emp.id !== employeeId));
 
     toast({
       title: "Employee Removed",
