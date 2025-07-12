@@ -1,0 +1,471 @@
+{
+"ORIG":[
+ {
+  "ORIG": "SETTINGS ",
+  "Column2": "set job parameter (job#\/Custname) in Ucam input window  (Job number in small letters)"
+ },
+ {
+  "ORIG": "Translate    ",
+  "Column2": "Load genesis output (ORIG) data in UCAM"
+ },
+ {
+  "ORIG": "OCTAGON",
+  "Column2": "Check rotation for octagon pads (if any)"
+ },
+ {
+  "ORIG": "NPTH ",
+  "Column2": "Set \"NPTH\" attribute for NPT holes"
+ },
+ {
+  "ORIG": "Tooling order",
+  "Column2": "Arrange drill sizes in ascending order (keep original tool numbers)"
+ },
+ {
+  "ORIG": "Net compare",
+  "Column2": "Load - compare the CAD net - save the net compare log file"
+ },
+ {
+  "ORIG": "Save",
+  "Column2": "Save job in \"ORIG\" folder & copy original zip file."
+ }
+],
+"REFERANCE":[
+ {
+  "REFERANCE": "SETTINGS ",
+  "Column2": "set job parameter (job#\/Custname) in Ucam input window  (Job number in small letters)"
+ },
+ {
+  "REFERANCE": "Translate    ",
+  "Column2": "Load genesis output (CLEAN) data in UCAM"
+ },
+ {
+  "REFERANCE": "OCTAGON",
+  "Column2": "Check rotation for octagon pads (if any)"
+ },
+ {
+  "REFERANCE": "NPTH ",
+  "Column2": "Set \"NPTH\" attribute for NPT holes"
+ },
+ {
+  "REFERANCE": "Tooling order",
+  "Column2": "Arrange drill sizes in ascending order"
+ },
+ {
+  "REFERANCE": "FLASH",
+  "Column2": "Convert Draw to flash (if necessary)"
+ },
+ {
+  "REFERANCE": "Contourize",
+  "Column2": "Do contourize and compare with ucam originals"
+ },
+ {
+  "REFERANCE": "NEG Layer",
+  "Column2": "ConvertNeg layer to +ve image (use reverse layer option)"
+ },
+ {
+  "REFERANCE": "Netlist ",
+  "Column2": "Create Reference netlist"
+ },
+ {
+  "REFERANCE": "Save ",
+  "Column2": "Save the job in \"reference\" folder"
+ }
+],
+"Edit|stackup":[
+ {
+  "Edit | stackup": "SETTINGS ",
+  "Column2": "set job parameter (job#\/Custname) in Ucam input window  (Job number in small letters)"
+ },
+ {
+  "Edit | stackup": "Translate    ",
+  "Column2": "Load genesis output (Edit\/Array) data in UCAM"
+ },
+ {
+  "Edit | stackup": "Blocks",
+  "Column2": "Check array are in block. Blocks are not allowed in 1up data (Do not step and repeat extra layers)"
+ },
+ {
+  "Edit | stackup": "OCTAGON",
+  "Column2": "Check rotation for octagon pads (if any)"
+ },
+ {
+  "Edit | stackup": "FLASH",
+  "Column2": "Convert Draw to flash\/contourize (if necessary \/ Mask layers features are should pad)"
+ },
+ {
+  "Edit | stackup": "IMP",
+  "Column2": "Split impedance tracks to a separate aperture & name it"
+ },
+ {
+  "Edit | stackup": "Save ",
+  "Column2": "Save the job in \"(Edit\/Array)\" folder"
+ }
+],
+"Edit|Marking":[
+ {
+  "Edit | Marking": "Preferred Lyrs ",
+  "Column2": "Top silk | Bot silk | mask | Metal. Min scale 0.6"
+ },
+ {
+  "Edit | Marking": "Date code ",
+  "Column2": "Add \"LAZY8\" & change it (WW\/YY) or (YY\/WW)"
+ },
+ {
+  "Column2": "Do not use D250 code for non-white ident ----Use text aperture for date code width size 2.06x1.5mm"
+ },
+ {
+  "Column2": "Verify the D250 date code [LAZY 8's] orientation on every job. Refer the customer supplied image if in bottom"
+ },
+ {
+  "Edit | Marking": "Add Logo\/ROHS\/PB\/Ecode",
+  "Column2": "Refer Master spec\/DWG for logo type, format"
+ },
+ {
+  "Edit | Marking": "impedance job",
+  "Column2": "Leave enough space to 14 digit number after datecode for build and meature\/pickering job"
+ },
+ {
+  "Edit | Marking": "UL",
+  "Column2": "Add \"E96467\" (only if master spec\/drawing note calls for UL file number)"
+ },
+ {
+  "Edit | Marking": "PICKERING ",
+  "Column2": "if master spec states to add  PO & PO is not known, Add \"lazy8\""
+ },
+ {
+  "Edit | Marking": "Elmatica\/GRUNDFOS",
+  "Column2": "if master spec for CTI value then add \"CTI=175\""
+ },
+ {
+  "Edit | Marking": "SMT Cutomer",
+  "Column2": "Add zip file name in array border on top copper layer"
+ },
+ {
+  "Edit | Marking": "D250 DC rotation ",
+  "Column2": "Anything other than 0,90,180,270 deg not permitted"
+ },
+ {
+  "Edit | Marking": "Add others ",
+  "Column2": "Additional marking (like PN\/REV) as per FAB & Cust spec"
+ },
+ {
+  "Edit | Marking": "Visual check ",
+  "Column2": "Marking should not overlap with text on corresponding lyrs"
+ }
+],
+"EDIT|Rout":[
+ {
+  "EDIT | Rout": "Tool split ",
+  "Column2": "Split Tools as INT cutout (cw),INT Rout_Ext Rout (CCW), Then De-tabs"
+ },
+ {
+  "EDIT | Rout": "Tool size",
+  "Column2": "Should be arranged from Small to large"
+ },
+ {
+  "EDIT | Rout": "Tool order",
+  "Column2": "INT rout,tab rout & Ext rout (CCW),INT De-tabs,Ext de-tabs"
+ },
+ {
+  "EDIT | Rout": "Rout chain",
+  "Column2": "INT rout(CW),Tab rout,Ext rout(CCWW),INT De-tabs,Ext de-tabs"
+ },
+ {
+  "EDIT | Rout": "Plunge point",
+  "Column2": "Plunge point for cutout\/closed loop: do not use the corners to plunge"
+ },
+ {
+  "EDIT | Rout": "Rout PATH ",
+  "Column2": "Keep the rout PATH layer as such"
+ },
+ {
+  "EDIT | Rout": "Plated Rout",
+  "Column2": "separate Plated Rout (INDEX:2)"
+ },
+ {
+  "Column2": "Assign Rout Chain (rout path layer not needed)"
+ },
+ {
+  "EDIT | Rout": "Verification ",
+  "Column2": "Compensate Rout layerd & comppare with COMPO layer"
+ },
+ {
+  "EDIT | Rout": "Swarf hole",
+  "Column2": "Verify swarf hole location (with Compo_outline layer)"
+ }
+],
+"EDIT|Drill":[
+ {
+  "EDIT | Drill": "Tool split",
+  "Column2": "split drills per FHS & split slot drills to separate tools"
+ },
+ {
+  "EDIT | Drill": "Tool order",
+  "Column2": "Arrange Tools from Small size to large "
+ },
+ {
+  "EDIT | Drill": "Attribute ",
+  "Column2": "Set \"npth for NPTH holes & \"swarfs\" for pilot holes"
+ },
+ {
+  "EDIT | Drill": "Array",
+  "Column2": "Run Drill optimize (only for First board drill & array holes)"
+ },
+ {
+  "EDIT | Drill": "No Array",
+  "Column2": "Run Drill optimize"
+ }
+],
+"DRILL_PLOT":[
+ {
+  "DRILL_PLOT": "Array ",
+  "Column2": "Run Drill symbol (only for First board drill & array holes)"
+ },
+ {
+  "DRILL_PLOT": "No Array ",
+  "Column2": "Run Drill symbol"
+ },
+ {
+  "DRILL_PLOT": "Dimentions",
+  "Column2": "Add single board, Array drill to Brd edge, Technical band, board to board,Cutout, Chamfer,ARC & score indications"
+ },
+ {
+  "DRILL_PLOT": "2nd Drill ",
+  "Column2": "if NPTH drill to cu (like SMD,Trace <0.15mm not able to fix).Move to rout(rt02-01) - if NPTH partially falls on SMD also."
+ },
+ {
+  "Column2": "if NPTH have Greater size pad, 2nd drill to rout (rt01-01) and copy to compo layers"
+ },
+ {
+  "DRILL_PLOT": "Drill Plot",
+  "Column2": "Change the minimum aperture size in plot drawing to 0.2mm. if the original drawing has tiny aperture then change it to 0.2mm while merging with pad plot"
+ },
+ {
+  "DRILL_PLOT": "Add addition plot",
+  "Column2": "Additional drawing layer set as plot2"
+ }
+],
+"Netlist":[
+ {
+  "Netlist": "No Array ",
+  "Column2": "Create Reference Netlist"
+ },
+ {
+  "Netlist": "Array ",
+  "Column2": "Duplicate step, Expand Block & then Create netlist"
+ }
+],
+"Other":[
+ {
+  "OTHER": "Dwg lyr",
+  "Column2": "Check and Add drawing  layers"
+ },
+ {
+  "OTHER": "Extra lyr",
+  "Column2": "Remove Extra layers"
+ },
+ {
+  "OTHER": "CAD NET",
+  "Column2": "Compare CADNET"
+ },
+ {
+  "OTHER": "NET LOG FILE",
+  "Column2": "Copy NETLOG_CADNET Comparison report in Final edit data"
+ }
+],
+"Panel|Setup":[
+ {
+  "Panel | Setup": "Remove Extra lyr",
+  "Column2": "Remove paste, Drawing,outline,routpath,drillplot,help layers"
+ },
+ {
+  "Panel | Setup": "Setup",
+  "Column2": "ML to PTH if job is Double sided \/ SS"
+ },
+ {
+  "Column2": "Enter cutomer name & job number in customer ID (use small letters)"
+ },
+ {
+  "Panel | Setup": "Brd to Brd Spacing ",
+  "Column2": "min 2.5mm"
+ },
+ {
+  "Panel | Setup": "Mixed panel",
+  "Column2": "7mm (min 2.5mm) spacing (without score)"
+ },
+ {
+  "Panel | Setup": "Jump Scoring ",
+  "Column2": "Keep 20mm (min 10mm) board to board spacing"
+ },
+ {
+  "Panel | Setup": "Step & Turn",
+  "Column2": "Need to Centralise the board"
+ },
+ {
+  "Panel | Setup": "Panel Frame",
+  "Column2": "Try to place the circuits in manafacturing panel such a way to get even frame around the circuits"
+ }
+],
+"Multipanel|Setup":[
+ {
+  "Multipanel|Setup": "Dummy ",
+  "Column2": "Create Dummy lyrs_Match layer parameters for Diff boards"
+ },
+ {
+  "Multipanel|Setup": "Mask",
+  "Column2": "Provide Full mask clearance for No mask boards"
+ },
+ {
+  "Multipanel|Setup": "Single board ",
+  "Column2": "if present along with PTH\/ML boards, Do 2nd Drill for SS board"
+ },
+ {
+  "Multipanel|Setup": "Panel setup",
+  "Column2": "Enter customer name & Job number in customer ID (Use small letters)"
+ },
+ {
+  "Multipanel|Setup": "Brd-Brd Spacing ",
+  "Column2": "min 2.5mm"
+ },
+ {
+  "Multipanel|Setup": "While placing the boards",
+  "Column2": "Follow double head Drilling rules"
+ },
+ {
+  "Multipanel|Setup": "Mixed panel",
+  "Column2": "7mm (min 2.5mm) spacing (without score)"
+ },
+ {
+  "Multipanel|Setup": "Jump  score",
+  "Column2": "keep 20mm (min 10mm) board to board spacing"
+ },
+ {
+  "Column2": "For horizontal jump score dimention from top or bottom left- For vertical jump score dimention"
+ },
+ {
+  "Column2": "from top left or top right "
+ },
+ {
+  "Column2": "Add jump score for impedance coupons if applicable"
+ }
+],
+"Panel|Edit":[
+ {
+  "Panel|Edit": "Frame",
+  "Column2": "Edit CUST ID text if it overlaps with panel thieving & panel feature"
+ },
+ {
+  "Column2": "Remove broken drill for PTH board"
+ },
+ {
+  "Column2": "Do Visual check & Verify panel features"
+ },
+ {
+  "Panel|Edit": "Blind via coupons",
+  "Column2": "Add Blind via coupons to manufaturing panel frame for all the blind via jobs[has only the circuit block+blind via coupons]"
+ },
+ {
+  "Panel|Edit": "resign filled via jobs ",
+  "Column2": "Move all CCD holes from main drill to rf01-01 layer [RF01-01 has the circuit block+CCD\" set subclass \"Blind\""
+ },
+ {
+  "Panel|Edit": "De-tabs ",
+  "Column2": "Check DeTabs at panel formed cutout areas (If so increase the gap)"
+ },
+ {
+  "Panel|Edit": "Score ",
+  "Column2": "Add TEXT & Dimention for Score lines (add jump score indications if any)"
+ },
+ {
+  "Panel|Edit": "Fingers",
+  "Column2": "Stretch shorting bars up to panel edge"
+ },
+ {
+  "Column2": "Check the shorting bar connection by using same layers net option"
+ },
+ {
+  "Column2": "confirm pilot hole does not falls on shorting bars"
+ },
+ {
+  "Panel|Edit": "gold area calculation",
+  "Column2": "Run gold area calculation(exposed area by gold mask) for hard gold jobs & report in it Skyla FYI"
+ }
+],
+"Final":[
+ {
+  "FINAL": "Readme",
+  "Column2": "Report Deviations and min AR"
+ },
+ {
+  "FINAL": "PDF\/XLS",
+  "Column2": "Include Customer related PDF | XLS files \/polar report\/impedance zip\/coupon in to Final Zip"
+ },
+ {
+  "FINAL": "Impedance FYI",
+  "Column2": "Include the impedance FYI points in Cam FYI report (if present)"
+ }
+],
+"Panel special":[
+ {
+  "Check type": "Check Master spec note and rout card PDF",
+  " Sequential\/split\/stacked": "Take notes given for panel features."
+ },
+ {
+  "Check type": "Copper weight",
+  " Sequential\/split\/stacked": "Check build in rout card pdf- follow the copper weight"
+ },
+ {
+  "Check type": "Panel",
+  " Sequential\/split\/stacked": "Run panel as usual"
+ },
+ {
+  "Check type": "Blind coupon",
+  " Sequential\/split\/stacked": "Add blind via coupon as specified in master spec."
+ },
+ {
+  "Check type": "CCD hole",
+  " Sequential\/split\/stacked": "Add In-board CCD holes"
+ },
+ {
+  "Check type": "Scan target",
+  " Sequential\/split\/stacked": "Add Quick scan target (If needed)."
+ },
+ null,
+ null,
+ {
+  "Check type": "INNER PART"
+ },
+ {
+  "Check type": "Edit",
+  " Sequential\/split\/stacked": "keep the layers as needed for inner part & Rename with new job number"
+ },
+ {
+  "Check type": "Panel",
+  " Sequential\/split\/stacked": "Run panel as usual & note down the copper weight (reference only)."
+ },
+ {
+  "Check type": "Replace file",
+  " Sequential\/split\/stacked": "Replace all the layer files with main panel files"
+ },
+ {
+  "Check type": "Panel feature",
+  " Sequential\/split\/stacked": "Add panel features (plating bar, score hole, bombsite,olec etc..). Take this one from old jobs."
+ },
+ {
+  "Check type": "Xray hole",
+  " Sequential\/split\/stacked": "modify Xray holes- check with old one."
+ },
+ {
+  "Check type": "Copper weight",
+  " Sequential\/split\/stacked": "change copper weight (as per note 11)."
+ },
+ {
+  "Check type": "Dount lyr",
+  " Sequential\/split\/stacked": "Check master spec and add donut layer if needed."
+ },
+ {
+  "Check type": "False layer",
+  " Sequential\/split\/stacked": "Add as per customer requirement."
+ }
+]
+}
